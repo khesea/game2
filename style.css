@@ -15,6 +15,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  font-family: 'Mynerve', cursive;
 }
 
 .score {
@@ -31,6 +32,7 @@ body {
   padding: 5px;
   background-color: #222;
   color: beige;
+  cursor: default;
 }
 
 .game-table {
@@ -49,6 +51,7 @@ body {
   border-radius: 5px;
   transition: all .2s linear;
   margin: 1%;
+  cursor: pointer;
 }
 
 .game-card i {
@@ -79,4 +82,21 @@ body {
 
 .game-card:hover {
   background: #d1d1c0;
+}
+
+.again {
+  margin-top: 20px;
+}
+
+#play_again {
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #222;
+  color: beige;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#play_again:hover {
+  opacity: 0.8;
 }

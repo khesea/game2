@@ -9,9 +9,34 @@ let trying = document.getElementsByClassName('trying')[0].querySelector('span');
 //обозначаем успешные угадывания
 let successing = document.getElementsByClassName('successing')[0].querySelector('span');
 
+//расширяю встроенный объект
+Array.prototype.shuffle = function() {
+  let input = this;
+
+  for (let i = input.length - 1; i >= 0; i--) {
+    let randomIndex = Math.floor(Math.random() * (i + 1));
+    let itemAtIndex = input[randomIndex];
+
+    input[randomIndex] = input[i];
+    input[i] = itemAtIndex;
+  }
+  return input;
+}
+
+//создаю массив с иконками
+const array = ['<i class="fa fa-compass"></i>', '<i class="fa fa-cloud"></i>','<i class="fa fa-play"></i>', '<i class="fa fa-bolt"></i>',
+'<i class="fa fa-stop"></i>', '<i class="fa fa-bolt"></i>', '<i class="fa fa-cogs"></i>', '<i class="fa fa-play"></i>', '<i class="fa fa-atom"></i>',
+'<i class="fa fa-cogs"></i>', '<i class="fa fa-compass"></i>', '<i class="fa fa-atom"></i>', '<i class="fa fa-stop"></i>', '<i class="fa fa-basketball-ball"></i>',
+'<i class="fa fa-cloud"></i>', '<i class="fa fa-basketball-ball"></i>']
+
+//перемешиваю массив
+let shuffleArray = array.shuffle();
+
 //обозначаем игровые карты
 const cards = document.getElementsByClassName("game-card");
-console.log(cards[0]);
+for (let i = 0; i < cards.length; i++) {
+  cards[i].innerHTML += shuffleArray[i];
+}
 
 //добавляем иконку вопроса на все карточки
 for (let i = 0; i < cards.length; i++) {
@@ -70,4 +95,12 @@ for (let i = 0; i < cards.length; i++) {
       }
     }
   };
+}
+
+//разрешаю сыграть заново
+const again = document.querySelector('#play_again');
+again.addEventListener('click', playAgain, false);
+
+function playAgain() {
+  location.reload();
 }
